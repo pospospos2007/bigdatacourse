@@ -39,7 +39,7 @@ public class Mapper {
 
     }
 
-    public void sort(List<Pair> pairs){
+    public static void sort(List<Pair> pairs){
         Collections.sort(pairs,new PairComparator());
     }
 

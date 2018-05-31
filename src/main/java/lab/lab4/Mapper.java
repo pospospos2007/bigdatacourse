@@ -22,10 +22,10 @@ public class Mapper {
                     String[] temp = list[i].split("-");
                     int j=0;
                     while(j<temp.length){
-                        Pair pair = new Pair(temp[j].replace("\"","").replace("'","").toLowerCase().replace(".",""),"1");
                         if(map.containsKey(temp[j].replace("\"","").replace("'","").toLowerCase().replace(".",""))){
+                            int origin = Integer.valueOf(map.get(temp[j].replace("\"","").replace("'","").toLowerCase().replace(".","")));
                             map.put(temp[j].replace("\"","").replace("'","").toLowerCase().replace(".",""),
-                                    Integer.valueOf(map.get(temp[j].replace("\"","").replace("'","").toLowerCase().replace(".","")))+1+""
+                                    origin+1+""
                             );
                         }else{
                             map.put(temp[j].replace("\"","").replace("'","").toLowerCase().replace(".",""),"1");
@@ -33,7 +33,14 @@ public class Mapper {
                         j++;
                     }
                 }else{
-                    map.put(list[i].replace("\"","").replace("'","").toLowerCase().replace(".",""),"1");
+                    if(map.containsKey(list[i].replace("\"","").replace("'","").toLowerCase().replace(".",""))){
+                        int origin = Integer.valueOf(map.get(list[i].replace("\"","").replace("'","").toLowerCase().replace(".","")));
+                        map.put(list[i].replace("\"","").replace("'","").toLowerCase().replace(".",""),
+                                origin+1+""
+                        );
+                    }else{
+                        map.put(list[i].replace("\"","").replace("'","").toLowerCase().replace(".",""),"1");
+                    }
                 }
 
             }
